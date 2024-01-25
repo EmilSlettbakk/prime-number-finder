@@ -59,10 +59,11 @@ fn main() {
         let result_clone = Arc::clone(&result);
 
         threads.push(thread::spawn(move || {
+            let thread_num = i + 1;
             let mut local_result = Vec::new();
             for num in thread_start..thread_end {
                 if is_prime(num) {
-                    local_result.push((num, i + 1));
+                    local_result.push((num, thread_num));
                 }
             }
 
